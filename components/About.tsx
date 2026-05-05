@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { Code2, Layers, Rocket, TrendingUp } from 'lucide-react'
 
@@ -20,7 +21,7 @@ const highlights = [
   {
     icon: Layers,
     title: 'Visão Full-Stack',
-    desc: 'Do banco de dados à interface, entendo o ciclo completo de uma aplicação e como cada camada se conecta.',
+    desc: 'Aprendendo do banco de dados à interface, entendendo o ciclo completo de uma aplicação e como cada camada se conecta.',
   },
   {
     icon: Rocket,
@@ -41,7 +42,7 @@ const container = {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
 }
 
 export default function About() {
@@ -87,14 +88,18 @@ export default function About() {
             animate={inView ? 'visible' : 'hidden'}
             className="flex flex-col items-center lg:items-start gap-8"
           >
-            {/* Photo placeholder */}
+            {/* Profile photo */}
             <motion.div variants={fadeUp} className="relative">
               <div className="w-56 h-56 rounded-2xl bg-gradient-primary p-[2px] shadow-glow-md">
-                <div className="w-full h-full rounded-2xl bg-bg-card flex items-center justify-center overflow-hidden">
-                  <div className="text-center">
-                    <div className="font-syne font-extrabold text-6xl text-gradient mb-1">GH</div>
-                    <div className="font-mono text-xs text-ink-muted">foto em breve</div>
-                  </div>
+                <div className="relative w-full h-full rounded-2xl bg-bg-card overflow-hidden">
+                  <Image
+                    src="/img78.png"
+                    alt="Gabriel Hubiner Oliveira"
+                    fill
+                    sizes="224px"
+                    className="object-cover"
+                    priority
+                  />
                 </div>
               </div>
               {/* Status badge */}
@@ -137,9 +142,9 @@ export default function About() {
               </p>
 
               <p className="text-ink-secondary text-base leading-relaxed">
-                Meu foco atual está em consumir APIs públicas, organizar e apresentar dados de forma visual e
-                intuitiva — projetos que combinam lógica sólida no backend com interfaces limpas e modernas no
-                frontend. Acredito que um bom projeto precisa ser{' '}
+                Hoje, meu foco está em integrar APIs reais e transformar dados em interfaces claras, fluidas e
+                úteis — onde o backend sustenta a lógica e o frontend traduz tudo em experiência. Para mim, um bom
+                projeto é aquele que entrega valor de ponta a ponta: precisa ser{' '}
                 <span className="text-ink-primary font-medium">funcional, legível e publicável</span>.
               </p>
 

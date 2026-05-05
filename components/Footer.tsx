@@ -5,14 +5,13 @@ const navLinks = [
   { label: 'Sobre', href: '#sobre' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Roadmap', href: '#roadmap' },
   { label: 'Contato', href: '#contato' },
 ]
 
 const socials = [
-  { Icon: Github, href: 'https://github.com/gabrielhubiner', label: 'GitHub' },
-  { Icon: Linkedin, href: 'https://linkedin.com/in/gabrielhubiner', label: 'LinkedIn' },
-  { Icon: Mail, href: 'mailto:gabrielhubinerr@gmail.com', label: 'E-mail' },
+  { Icon: Github, href: 'https://github.com/hubiner', label: 'GitHub' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/gabriel-hubiner/', label: 'LinkedIn' },
+  { Icon: Mail, href: 'mailto:gabriel.hubiner.work@gmail.com', label: 'E-mail' },
 ]
 
 export default function Footer() {
@@ -59,12 +58,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-8 pt-6 border-t border-border/40 flex items-center justify-center">
           <span className="text-xs text-ink-muted">
             © {new Date().getFullYear()} Gabriel Hubiner Oliveira. Todos os direitos reservados.
-          </span>
-          <span className="text-xs text-ink-muted font-mono">
-            Feito com Next.js · Tailwind · Framer Motion
           </span>
         </div>
       </div>

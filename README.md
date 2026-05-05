@@ -1,106 +1,132 @@
-# Gabriel Hubin — Portfolio
+# Gabriel Hubiner — Portfolio
 
-Portfolio pessoal desenvolvido com Next.js 14, apresentando projetos, habilidades e formulário de contato integrado com EmailJS.
+Portfolio pessoal construído com Next.js 16, apresentando projetos reais em produção, stack técnica e canais de contato.
+
+🌐 **Live:** _adicione a URL após o deploy na Vercel_
+
+---
 
 ## Stack
 
-- **Next.js 14** (App Router)
-- **React 18** + **TypeScript**
-- **Tailwind CSS** — estilização
-- **Framer Motion** — animações
-- **EmailJS** — envio de mensagens sem backend
+- **Next.js 16** (App Router · Turbopack)
+- **React 19** + **TypeScript 5**
+- **Tailwind CSS 3** — estilização utilitária
+- **Framer Motion 12** — animações
+- **lucide-react** — ícones
+- **clsx** + **tailwind-merge** — composição de classes
+
+---
 
 ## Seções
 
 | Seção | Descrição |
 |---|---|
-| Hero | Apresentação com links para GitHub, LinkedIn e currículo |
-| About | Sobre mim |
-| Skills | Tecnologias e ferramentas |
-| Projects | Projetos com status (Planejado / Em Desenvolvimento / Em Breve) |
-| Roadmap | Plano de evolução técnica |
-| Contact | Formulário de contato via EmailJS |
+| **Hero** | Apresentação com CTA "Ver Projetos", "Entrar em Contato" e "Copiar E-mail" |
+| **Sobre** | Bio, foto de perfil, stats e cards de destaque |
+| **Skills** | Stack organizada em Backend, Frontend, Banco de Dados e Ferramentas & DevOps |
+| **Projetos** | Catálogo paginado de projetos reais — links para repositório no GitHub e site em produção |
+| **Contato** | GitHub, LinkedIn, e-mail, WhatsApp + card terminal-style com status, response time e localização |
+
+---
 
 ## Rodando localmente
 
 ### Pré-requisitos
 
-- Node.js 18+
-- npm
+- **Node.js 20+** (Next 16 não suporta Node 18)
+- **npm** (vem com o Node)
 
-### 1. Instalar dependências
+### 1. Clonar e instalar
 
 ```bash
+git clone https://github.com/Hubiner/<este-repo>.git
+cd <este-repo>
 npm install
 ```
 
-### 2. Configurar variáveis de ambiente
+> Este projeto não usa variáveis de ambiente. Não precisa criar `.env.local`.
 
-Crie um arquivo `.env.local` na raiz do projeto:
-
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=seu_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=seu_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=sua_public_key
-```
-
-> As chaves são obtidas no painel do [EmailJS](https://www.emailjs.com/).  
-> Sem elas, o formulário de contato exibirá erro ao enviar — o restante do site funciona normalmente.
-
-### 3. Iniciar o servidor de desenvolvimento
+### 2. Servidor de desenvolvimento
 
 ```bash
 npm run dev
 ```
 
-Acesse `http://localhost:3000`.
+Acesse `http://localhost:3000`. Hot reload automático via Turbopack.
 
-## Scripts disponíveis
-
-| Comando | Ação |
-|---|---|
-| `npm run dev` | Servidor de desenvolvimento com hot reload |
-| `npm run build` | Build de produção |
-| `npm run start` | Inicia o servidor de produção (requer build) |
-| `npm run lint` | Verifica problemas de linting |
-
-## Build de produção
+### 3. Build de produção (opcional, para testar localmente)
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Deploy
+---
 
-O projeto está configurado para deploy na [Vercel](https://vercel.com). Para publicar:
+## Scripts
 
-1. Faça push do repositório para o GitHub
-2. Importe o projeto na Vercel
-3. Adicione as variáveis de ambiente (`NEXT_PUBLIC_EMAILJS_*`) nas configurações do projeto
-4. Deploy automático a cada push na branch `main`
+| Comando | Ação |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento (Turbopack, hot reload) |
+| `npm run build` | Build de produção otimizado |
+| `npm run start` | Servidor de produção (requer `build` antes) |
+| `npm run lint` | Verifica problemas com ESLint |
+
+---
+
+## Deploy na Vercel
+
+1. Faça push do repositório para o GitHub.
+2. Em [vercel.com/new](https://vercel.com/new), importe o repositório.
+3. Vercel detecta automaticamente Next.js — deixe os defaults.
+4. Clique em **Deploy**.
+
+Cada push na branch `main` dispara redeploy automático.
+
+> Sem variáveis de ambiente para configurar — o site é 100% estático/SSG.
+
+---
 
 ## Estrutura do projeto
 
 ```
-portfolio/
+.
 ├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
+│   ├── icon.svg          # Favicon (gerado pelo Next App Router)
+│   ├── globals.css       # Tailwind directives + estilos base
+│   ├── layout.tsx        # Layout raiz + metadata + fontes
+│   └── page.tsx          # Homepage (composição das seções)
 ├── components/
 │   ├── Navbar.tsx
 │   ├── Hero.tsx
 │   ├── About.tsx
 │   ├── Skills.tsx
 │   ├── Projects.tsx
-│   ├── Roadmap.tsx
 │   ├── Contact.tsx
 │   └── Footer.tsx
 ├── data/
-│   ├── projects.ts
-│   └── skills.ts
+│   ├── projects.ts       # Lista de projetos exibidos
+│   └── skills.ts         # Categorias e níveis de skill
 ├── lib/
+│   └── utils.ts          # Helpers (cn para Tailwind)
 ├── public/
-└── next.config.ts
+│   └── img78.png         # Foto de perfil
+├── next.config.mjs
+├── tailwind.config.ts
+└── tsconfig.json
 ```
+
+---
+
+## Customização rápida
+
+- **Adicionar projeto:** edite `data/projects.ts` (paginação ajusta automaticamente; 6 projetos por página).
+- **Atualizar skills:** edite `data/skills.ts` (níveis: `learning`, `intermediate`, `proficient`).
+- **Trocar foto:** substitua `public/img78.png` mantendo o mesmo nome, ou ajuste o `src` em `components/About.tsx`.
+- **Atualizar contatos:** `components/Contact.tsx`, `components/Hero.tsx` e `components/Footer.tsx`.
+
+---
+
+## Licença
+
+Uso pessoal. Sinta-se livre para se inspirar — código aberto, atribuição apreciada.

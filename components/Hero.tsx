@@ -1,7 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, FileDown, Eye } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Check, Eye } from 'lucide-react'
+
+const PROFESSIONAL_EMAIL = 'gabriel.hubiner.work@gmail.com'
 
 const floatingCards = [
   { code: 'const dev = new Engineer()', delay: 0, x: '-8%', y: '20%' },
@@ -11,6 +14,18 @@ const floatingCards = [
 ]
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(PROFESSIONAL_EMAIL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch {
+      window.location.href = `mailto:${PROFESSIONAL_EMAIL}`
+    }
+  }
+
   return (
     <section
       id="inicio"
@@ -126,15 +141,19 @@ export default function Hero() {
             Entrar em Contato
           </a>
 
-          <a
-            href="/cv-placeholder.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-accent border border-accent/25 bg-accent-muted hover:bg-accent/15 hover:border-accent/50 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+          <button
+            type="button"
+            onClick={handleCopyEmail}
+            aria-live="polite"
+            className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium border transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] ${
+              copied
+                ? 'text-emerald-300 border-emerald-400/40 bg-emerald-400/10'
+                : 'text-accent border-accent/25 bg-accent-muted hover:bg-accent/15 hover:border-accent/50'
+            }`}
           >
-            <FileDown size={18} />
-            Baixar Currículo
-          </a>
+            {copied ? <Check size={18} /> : <Mail size={18} />}
+            {copied ? 'E-mail copiado!' : 'Copiar E-mail'}
+          </button>
         </motion.div>
 
         {/* Social quick links */}
@@ -145,7 +164,7 @@ export default function Hero() {
           className="flex items-center justify-center gap-4"
         >
           <a
-            href="https://github.com/seu-usuario"
+            href="https://github.com/hubiner"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2.5 rounded-lg text-ink-muted hover:text-ink-primary hover:bg-bg-card transition-all duration-200 hover:scale-110"
@@ -154,7 +173,7 @@ export default function Hero() {
             <Github size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/seu-usuario"
+            href="https://www.linkedin.com/in/gabriel-hubiner/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2.5 rounded-lg text-ink-muted hover:text-ink-primary hover:bg-bg-card transition-all duration-200 hover:scale-110"

@@ -10,7 +10,6 @@ const links = [
   { label: 'Sobre', href: '#sobre' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projetos', href: '#projetos' },
-  { label: 'Roadmap', href: '#roadmap' },
   { label: 'Contato', href: '#contato' },
 ]
 
