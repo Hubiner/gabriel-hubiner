@@ -100,7 +100,7 @@ export default function Skills() {
             <motion.div
               key={cat.id}
               variants={fadeUp}
-              className={`relative p-6 rounded-2xl bg-bg-card border ${cat.borderColor} transition-all duration-300 group overflow-hidden`}
+              className={`relative p-6 rounded-2xl bg-bg-card border ${cat.borderColor} transition-all duration-300 group overflow-hidden h-full min-h-[220px]`}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.boxShadow = `0 8px 60px ${cat.glowColor}`

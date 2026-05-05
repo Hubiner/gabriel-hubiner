@@ -161,13 +161,13 @@ export default function About() {
                 <motion.div
                   key={h.title}
                   variants={fadeUp}
-                  className="p-5 rounded-xl bg-bg-card border border-border card-glow group"
+                  className="p-5 rounded-xl bg-bg-card border border-border card-glow group h-full flex flex-col"
                 >
                   <div className="w-9 h-9 rounded-lg bg-primary-muted flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                     <h.icon size={18} className="text-primary" />
                   </div>
                   <h3 className="font-syne font-semibold text-sm text-ink-primary mb-1.5">{h.title}</h3>
-                  <p className="text-xs text-ink-secondary leading-relaxed">{h.desc}</p>
+                  <p className="text-xs text-ink-secondary leading-relaxed flex-1">{h.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
