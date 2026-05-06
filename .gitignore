@@ -183,6 +183,7 @@ out/
 .turbo/
 .eslintcache
 .stylelintcache
+*.tsbuildinfo
 
 # Variáveis de ambiente
 .env
@@ -370,7 +371,8 @@ docker-compose.override.yml
 
 # Volumes locais
 docker-volumes/
-data/
+# A pasta /data do app Next.js contem dados versionaveis do portfolio.
+# Volumes locais devem ficar dentro de docker-volumes/.
 
 
 # =============================================================================

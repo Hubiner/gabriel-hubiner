@@ -113,9 +113,12 @@ export default function Navbar() {
             </a>
 
             <button
+              type="button"
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-controls="mobile-menu"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
               className="md:hidden p-2 rounded-lg text-ink-secondary hover:text-ink-primary hover:bg-bg-surface transition-colors"
-              aria-label="Toggle menu"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -137,10 +140,12 @@ export default function Navbar() {
             <div
               className="absolute inset-0 bg-bg-base/95 backdrop-blur-xl"
               onClick={() => setMenuOpen(false)}
+              aria-hidden="true"
             />
 
             {/* Menu content */}
             <motion.div
+              id="mobile-menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -153,7 +158,9 @@ export default function Navbar() {
                   <span className="text-ink-primary">.</span>
                 </span>
                 <button
+                  type="button"
                   onClick={() => setMenuOpen(false)}
+                  aria-label="Fechar menu"
                   className="p-2 rounded-lg text-ink-secondary hover:text-ink-primary"
                 >
                   <X size={20} />
