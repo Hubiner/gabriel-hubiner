@@ -1,8 +1,8 @@
 # Gabriel Hubiner — Portfolio
 
-Portfolio pessoal construído com Next.js 16, apresentando projetos reais em produção, stack técnica e canais de contato.
+Portfolio pessoal construído com Next.js 16, apresentando projetos reais em produção.
 
-🌐 **Live:** _adicione a URL após o deploy na Vercel_
+🌐 **Live:** https://gabriel-hubiner.vercel.app/
 
 ---
 
@@ -16,7 +16,7 @@ Portfolio pessoal construído com Next.js 16, apresentando projetos reais em pro
 - **clsx** + **tailwind-merge** — composição de classes
 
 ---
-
+<!--
 ## Seções
 
 | Seção | Descrição |
@@ -28,7 +28,7 @@ Portfolio pessoal construído com Next.js 16, apresentando projetos reais em pro
 | **Contato** | GitHub, LinkedIn, e-mail, WhatsApp + card terminal-style com status, response time e localização |
 
 ---
-
+-->
 ## Rodando localmente
 
 ### Pré-requisitos
@@ -43,9 +43,9 @@ git clone https://github.com/Hubiner/<este-repo>.git
 cd <este-repo>
 npm install
 ```
-
+<!--
 > Este projeto não usa variáveis de ambiente. Não precisa criar `.env.local`.
-
+-->
 ### 2. Servidor de desenvolvimento
 
 ```bash
@@ -74,59 +74,7 @@ npm run start
 
 ---
 
-## Deploy na Vercel
-
-1. Faça push do repositório para o GitHub.
-2. Em [vercel.com/new](https://vercel.com/new), importe o repositório.
-3. Vercel detecta automaticamente Next.js — deixe os defaults.
-4. Clique em **Deploy**.
-
-Cada push na branch `main` dispara redeploy automático.
-
-> Sem variáveis de ambiente para configurar — o site é 100% estático/SSG.
-
----
-
-## Estrutura do projeto
-
-```
-.
-├── app/
-│   ├── icon.svg          # Favicon (gerado pelo Next App Router)
-│   ├── globals.css       # Tailwind directives + estilos base
-│   ├── layout.tsx        # Layout raiz + metadata + fontes
-│   └── page.tsx          # Homepage (composição das seções)
-├── components/
-│   ├── Navbar.tsx
-│   ├── Hero.tsx
-│   ├── About.tsx
-│   ├── Skills.tsx
-│   ├── Projects.tsx
-│   ├── Contact.tsx
-│   └── Footer.tsx
-├── data/
-│   ├── projects.ts       # Lista de projetos exibidos
-│   └── skills.ts         # Categorias e níveis de skill
-├── lib/
-│   └── utils.ts          # Helpers (cn para Tailwind)
-├── public/
-│   └── img78.png         # Foto de perfil
-├── next.config.mjs
-├── tailwind.config.ts
-└── tsconfig.json
-```
-
----
-
-## Customização rápida
-
-- **Adicionar projeto:** edite `data/projects.ts` (paginação ajusta automaticamente; 6 projetos por página).
-- **Atualizar skills:** edite `data/skills.ts` (níveis: `learning`, `intermediate`, `proficient`).
-- **Trocar foto:** substitua `public/img78.png` mantendo o mesmo nome, ou ajuste o `src` em `components/About.tsx`.
-- **Atualizar contatos:** `components/Contact.tsx`, `components/Hero.tsx` e `components/Footer.tsx`.
-
----
 
 ## Licença
 
-Uso pessoal. Sinta-se livre para se inspirar — código aberto, atribuição apreciada.
+Uso pessoal. Sinta-se livre para se inspirar — código aberto.
